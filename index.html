@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudySphere - College Study Material & PYQs Hub</title>
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- App Container -->
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <span class="brand-name">StudySphere</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="#dashboard" class="nav-link active" data-view="dashboard">
+              <i data-lucide="layout-dashboard"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#explorer" class="nav-link" data-view="explorer">
+              <i data-lucide="book-open"></i>
+              <span>Course Explorer</span>
+            </a>
+          </li>
+          <li>
+            <a href="#pyqs" class="nav-link" data-view="pyqs">
+              <i data-lucide="file-text"></i>
+              <span>PYQ Bank</span>
+            </a>
+          </li>
+          <li>
+            <a href="#bookmarks" class="nav-link" data-view="bookmarks">
+              <i data-lucide="bookmark"></i>
+              <span>My Bookmarks</span>
+            </a>
+          </li>
+          <li>
+            <a href="#upload" class="nav-link" data-view="upload">
+              <i data-lucide="upload-cloud"></i>
+              <span>Contribute</span>
+            </a>
+          </li>
+          <li>
+            <a href="#feedback" class="nav-link" data-view="feedback">
+              <i data-lucide="message-square"></i>
+              <span>Suggestion Box</span>
+            </a>
+          </li>
+          <li>
+            <a href="#suggestion-wall" class="nav-link" data-view="suggestion-wall">
+              <i data-lucide="heart"></i>
+              <span>Suggestion Wall</span>
+            </a>
+          </li>
+          <li>
+            <a href="#help-center" class="nav-link" data-view="help-center">
+              <i data-lucide="help-circle"></i>
+              <span>Care Centre</span>
+            </a>
+          </li>
+          <li>
+            <a href="#senior-experiences" class="nav-link" data-view="senior-experiences">
+              <i data-lucide="award"></i>
+              <span>Senior Wisdom</span>
+            </a>
+          </li>
+          <li>
+            <a href="#admin" class="nav-link" data-view="admin" id="admin-sidebar-link">
+              <i data-lucide="lock"></i>
+              <span>Admin Portal</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-profile" id="user-profile-section">
+          <div class="avatar-wrapper">
+            <div class="avatar">VS</div>
+            <div class="status-indicator online"></div>
+          </div>
+          <div class="user-info">
+            <span class="user-name">Guest Student</span>
+            <span class="user-role">College Visitor</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <div class="menu-toggle" id="menu-toggle">
+            <i data-lucide="menu"></i>
+          </div>
+          <button class="icon-btn hidden" id="header-back-btn" title="Back to Previous Page" style="margin-right: 12px; display: none; align-items: center; justify-content: center; width: 38px; height: 38px;">
+            <i data-lucide="arrow-left" style="width: 20px; height: 20px;"></i>
+          </button>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        
+        <div class="header-right">
+          <div class="search-bar-wrapper">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="global-search" placeholder="Quick search materials & codes...">
+            <div id="search-suggestions" class="search-suggestions hidden"></div>
+          </div>
+          
+          <button class="icon-btn" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i data-lucide="moon" id="theme-icon-dark"></i>
+            <i data-lucide="sun" id="theme-icon-light" style="display:none;"></i>
+          </button>
+          
+          <button class="icon-btn" id="notification-btn" title="Notifications">
+            <i data-lucide="bell"></i>
+            <span class="badge">3</span>
+          </button>
+          
+          <button class="primary-btn header-upload-btn" onclick="navigateTo('upload')">
+            <i data-lucide="plus"></i>
+            <span>Upload</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- View Containers -->
+      <div class="view-content-wrapper">
+        
+        <!-- DASHBOARD VIEW -->
+        <section id="view-dashboard" class="app-view active">
+          <!-- Hero section with gradient background -->
+          <div class="hero-banner animate-glow">
+            <div class="hero-text">
+              <h2>Welcome to StudySphere 👋</h2>
+              <p>Access previous papers (PYQs), lecture notes, and reference materials. Free download, no account needed!</p>
+            </div>
+            <div class="hero-stats">
+              <div class="mini-stat" style="min-width:200px; padding:18px 24px; align-items:center; justify-content:center; text-align:center; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px;">
+                <span class="number" id="stats-visitor-counter" style="font-size:1.35rem; text-align:center; line-height:1.3; font-weight:800; color:var(--text-main); font-family:'Outfit', sans-serif; display:block;">College Study Material Portal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- GEN-Z SEARCH & FILTER PANEL (No account needed) -->
+          <div class="finder-panel neon-border">
+            <div class="finder-header">
+              <div class="header-logo-glowing">
+                <i data-lucide="search"></i>
+              </div>
+              <div style="flex:1;">
+                <h3>Interactive Study Material Finder</h3>
+                <p class="subtitle">Search, preview, and download PYQs and notes instantly</p>
+              </div>
+              <span class="badge neon-pulse">ACTIVE DB</span>
+            </div>
+            <form id="finder-form" class="finder-form">
+              <div class="finder-row">
+                <!-- Course -->
+                <div class="finder-group flex-2">
+                  <label>Course</label>
+                  <div class="dual-input">
+                    <select id="finder-course-select" class="form-control finder-select">
+                      <option value="">Choose Course...</option>
+                      <option value="B.Sc (Hons) Computer Science">B.Sc (Hons) Computer Science</option>
+                      <option value="B.Sc Physical Science">B.Sc Physical Science</option>
+                      <option value="B.A (Hons) Economics">B.A (Hons) Economics</option>
+                      <option value="B.Com (Hons)">B.Com (Hons)</option>
+                      <option value="B.Sc (Hons) Chemistry">B.Sc (Hons) Chemistry</option>
+                      <option value="B.Sc (Hons) Physics">B.Sc (Hons) Physics</option>
+                    </select>
+                    <input type="text" id="finder-course-manual" class="form-control finder-text" placeholder="Or type course name...">
+                  </div>
+                </div>
+
+                <!-- Year -->
+                <div class="finder-group flex-1">
+                  <label>Year</label>
+                  <div class="dual-input">
+                    <select id="finder-year-select" class="form-control finder-select">
+                      <option value="">Choose Year...</option>
+                      <option value="2025">2025</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                    </select>
+                    <input type="text" id="finder-year-manual" class="form-control finder-text" placeholder="Or type year...">
+                  </div>
+                </div>
+              </div>
+
+              <div class="finder-row">
+                <!-- Semester -->
+                <div class="finder-group flex-1">
+                  <label>Semester</label>
+                  <select id="finder-sem-select" class="form-control">
+                    <option value="">All Semesters</option>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
+                  </select>
+                </div>
+
+                <!-- Subject -->
+                <div class="finder-group flex-2">
+                  <label>Subject</label>
+                  <div class="dual-input">
+                    <select id="finder-subject-select" class="form-control finder-select">
+                      <option value="">Choose Subject...</option>
+                    </select>
+                    <input type="text" id="finder-subject-manual" class="form-control finder-text" placeholder="Or type subject...">
+                  </div>
+                </div>
+
+                <!-- Book Name (Optional) -->
+                <div class="finder-group flex-2">
+                  <label>Book Name (Optional)</label>
+                  <input type="text" id="finder-book" class="form-control" placeholder="Search by textbook title or details...">
+                </div>
+              </div>
+
+              <div class="finder-actions">
+                <button type="button" class="secondary-btn" id="finder-clear-btn">
+                  <i data-lucide="rotate-ccw"></i> Reset Filters
+                </button>
+                <button type="submit" class="primary-btn neon-glow-btn">
+                  <i data-lucide="sparkles"></i> Search Material
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Live Search Results Grid (Hidden by default) -->
+          <div id="finder-results-section" class="finder-results-section hidden card-glow">
+            <div class="results-header">
+              <h3 id="results-title">Search Results (0 files found)</h3>
+              <button class="close-btn" id="close-results-btn" type="button">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+            <div class="materials-grid" id="finder-results-grid" style="margin-top:16px;">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+
+          <!-- Quick Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-bg color-primary">
+                <i data-lucide="book-open"></i>
+              </div>
+              <div class="stat-details">
+                <h3 id="stat-subjects-count">0</h3>
+                <p>Enrolled Subjects</p>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon-bg color-accent">
+                <i data-lucide="file-check"></i>
+              </div>
+              <div class="stat-details">
+                <h3 id="stat-pyqs-count">0</h3>
+                <p>PYQs Collected</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-bg color-success">
+                <i data-lucide="bookmark"></i>
+              </div>
+              <div class="stat-details">
+                <h3 id="stat-bookmarks-count">0</h3>
+                <p>Saved Items</p>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-bg color-info">
+                <i data-lucide="upload-cloud"></i>
+              </div>
+              <div class="stat-details">
+                <h3 id="stat-contributions-count">0</h3>
+                <p>Your Contributions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Row 2 (Recent Materials / Quick Explorer) -->
+          <div class="dashboard-row">
+            <div class="dash-column flex-2">
+              <div class="column-header">
+                <h3>Recently Added Materials</h3>
+                <button class="text-btn" onclick="navigateTo('explorer')">View All</button>
+              </div>
+              <div class="materials-list" id="recent-materials-list">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <div class="dash-column flex-1">
+              <div class="column-header">
+                <h3>Quick Categories</h3>
+              </div>
+              <div class="quick-categories">
+                <div class="category-pill-card" onclick="quickFilter('notes')">
+                  <div class="cat-icon-container notes-bg"><i data-lucide="edit-3"></i></div>
+                  <div class="cat-pill-info">
+                    <h4>Lecture Notes</h4>
+                    <span>Short guides & summaries</span>
+                  </div>
+                </div>
+                <div class="category-pill-card" onclick="quickFilter('pyqs')">
+                  <div class="cat-icon-container pyqs-bg"><i data-lucide="history"></i></div>
+                  <div class="cat-pill-info">
+                    <h4>PYQs</h4>
+                    <span>Previous year exam papers</span>
+                  </div>
+                </div>
+                <div class="category-pill-card" onclick="quickFilter('books')">
+                  <div class="cat-icon-container books-bg"><i data-lucide="book"></i></div>
+                  <div class="cat-pill-info">
+                    <h4>Reference Books</h4>
+                    <span>Standard textbooks</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COURSE EXPLORER VIEW -->
+        <section id="view-explorer" class="app-view">
+          <div class="explorer-controls">
+            <!-- Semesters Tabs -->
+            <div class="semester-tabs-container">
+              <div class="tabs-scroll" id="semester-tabs">
+                <!-- Semester pills 1-8 generated dynamically -->
+              </div>
+            </div>
+            
+            <!-- Departments Pills -->
+            <div class="dept-pills-container" id="dept-pills">
+              <!-- Departments generated dynamically -->
+            </div>
+          </div>
+
+          <!-- Subjects Grid -->
+          <div class="subjects-grid" id="subjects-grid">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Subject Materials List (Hidden until a subject card is clicked) -->
+          <div id="subject-materials-detail" class="subject-detail-section hidden">
+            <div class="detail-header">
+              <button class="back-btn" id="subject-detail-back-btn">
+                <i data-lucide="arrow-left"></i> Back to Subjects
+              </button>
+              <div class="subject-title-block">
+                <span class="subject-code-badge" id="detail-subject-code">CS-201</span>
+                <h2 id="detail-subject-name">Data Structures & Algorithms</h2>
+              </div>
+            </div>
+
+            <!-- Material Tabs (All, PYQs, Notes, Books) -->
+            <div class="material-filter-bar">
+              <div class="filter-tabs">
+                <button class="filter-tab active" data-type="all">All Files</button>
+                <button class="filter-tab" data-type="pyq">PYQs</button>
+                <button class="filter-tab" data-type="notes">Lecture Notes</button>
+                <button class="filter-tab" data-type="book">Reference Books</button>
+              </div>
+            </div>
+
+            <!-- Materials Grid -->
+            <div class="materials-grid" id="detail-materials-grid">
+              <!-- Dynamically populated material cards -->
+            </div>
+          </div>
+        </section>
+
+        <!-- PYQ BANK VIEW -->
+        <section id="view-pyqs" class="app-view">
+          <div class="pyq-controls-header">
+            <p>Filter previous year question papers by Exam, Year, and Subject.</p>
+            <div class="filters-panel">
+              <div class="filter-group">
+                <label for="pyq-year-select">Year</label>
+                <select id="pyq-year-select" class="form-control">
+                  <option value="all">All Years</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="pyq-exam-select">Exam Type</label>
+                <select id="pyq-exam-select" class="form-control">
+                  <option value="all">All Exams</option>
+                  <option value="End-Sem">End-Sem</option>
+                  <option value="Mid-Sem">Mid-Sem</option>
+                  <option value="Quiz/Sessionals">Quiz/Sessionals</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="pyq-subject-select">Subject</label>
+                <select id="pyq-subject-select" class="form-control">
+                  <option value="all">All Subjects</option>
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="materials-grid mt-4" id="pyq-bank-grid">
+            <!-- Dynamically loaded papers -->
+          </div>
+        </section>
+
+        <!-- BOOKMARKS VIEW -->
+        <section id="view-bookmarks" class="app-view">
+          <div class="bookmarks-header">
+            <p>Documents and papers you have pinned for quick offline reference.</p>
+          </div>
+          <div class="materials-grid" id="bookmarks-grid">
+            <!-- Bookmarked items list -->
+          </div>
+          <div class="empty-state hidden" id="bookmarks-empty-state">
+            <i data-lucide="bookmark" class="empty-icon"></i>
+            <h3>No Bookmarked Materials</h3>
+            <p>Click the bookmark icon on any document card to save it here.</p>
+            <button class="primary-btn" onclick="navigateTo('explorer')">Explore Materials</button>
+          </div>
+        </section>
+
+        <!-- UPLOAD VIEW -->
+        <section id="view-upload" class="app-view">
+          <div class="upload-container">
+            <div class="upload-header">
+              <h2>Contribute Study Material</h2>
+              <p>Share notes, assignment solutions, or question papers to help your peers.</p>
+            </div>
+            
+            <form id="upload-form" class="upload-form">
+              <div class="form-row">
+                <div class="form-group flex-2">
+                  <label for="upload-title">Document Title <span class="required">*</span></label>
+                  <input type="text" id="upload-title" placeholder="e.g. Mid-Sem 2024 Operating Systems" required class="form-control">
+                </div>
+                
+                <div class="form-group flex-1">
+                  <label for="upload-category">Material Type <span class="required">*</span></label>
+                  <select id="upload-category" required class="form-control">
+                    <option value="" disabled selected>Select Type</option>
+                    <option value="pyq">Previous Year Paper (PYQ)</option>
+                    <option value="notes">Lecture Notes</option>
+                    <option value="book">Reference Book</option>
+                    <option value="syllabus">Syllabus Guide</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group flex-1">
+                  <label for="upload-subject">Subject <span class="required">*</span></label>
+                  <select id="upload-subject" required class="form-control">
+                    <option value="" disabled selected>Select Subject</option>
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+                <div class="form-group flex-1">
+                  <label for="upload-semester">Semester <span class="required">*</span></label>
+                  <select id="upload-semester" required class="form-control">
+                    <option value="" disabled selected>Select Semester</option>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Conditional fields for PYQ -->
+              <div class="form-row pyq-conditional hidden" id="upload-pyq-options">
+                <div class="form-group flex-1">
+                  <label for="upload-year">Exam Year</label>
+                  <select id="upload-year" class="form-control">
+                    <option value="2025">2025</option>
+                    <option value="2024" selected>2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                  </select>
+                </div>
+                <div class="form-group flex-1">
+                  <label for="upload-exam-type">Exam Type</label>
+                  <select id="upload-exam-type" class="form-control">
+                    <option value="End-Sem">End-Sem</option>
+                    <option value="Mid-Sem" selected>Mid-Sem</option>
+                    <option value="Quiz/Sessionals">Quiz/Sessionals</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="upload-tags">Tags (Comma-separated)</label>
+                <input type="text" id="upload-tags" placeholder="e.g. recursion, trees, cs201, os, midterm" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="upload-description">Brief Description</label>
+                <textarea id="upload-description" rows="3" placeholder="Add details like topic covered, syllabus scope, or helpful hints..." class="form-control"></textarea>
+              </div>
+
+              <!-- Custom Drag & Drop File Input -->
+              <div class="file-drop-area" id="file-drop-area">
+                <div class="drop-icon">
+                  <i data-lucide="file-up"></i>
+                </div>
+                <div class="drop-text">
+                  <span class="file-btn">Choose a PDF file</span>
+                  <span class="or">or drag & drop here</span>
+                  <span class="file-limit">PDF format only, maximum 20MB</span>
+                </div>
+                <input type="file" id="upload-file" accept=".pdf" class="hidden-file-input">
+                <div id="selected-file-info" class="selected-file-info hidden">
+                  <i data-lucide="file-check" class="text-success"></i>
+                  <span id="selected-file-name">operating_systems.pdf</span>
+                  <button type="button" class="remove-file-btn" id="remove-file-btn">
+                    <i data-lucide="x"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="secondary-btn" id="reset-upload-btn">Reset</button>
+                <button type="submit" class="primary-btn">
+                  <i data-lucide="upload-cloud"></i> Upload Document
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- FEEDBACK & SUGGESTIONS VIEW -->
+        <section id="view-feedback" class="app-view">
+          <div class="upload-container" style="max-width: 900px;">
+            <div class="upload-header">
+              <h2>Suggestion & Problem Box</h2>
+              <p>Found a bug? Want to request specific notes or have ideas to improve StudySphere? Let us know below.</p>
+            </div>
+            
+            <form id="feedback-form" class="upload-form">
+              <div class="form-row">
+                <div class="form-group flex-2">
+                  <label for="feedback-subject">Subject/Title <span class="required">*</span></label>
+                  <input type="text" id="feedback-subject" placeholder="e.g. Broken links in Sem 3 notes, Requesting CS-301 DBMS books" required class="form-control">
+                </div>
+                
+                <div class="form-group flex-1">
+                  <label for="feedback-category">Category <span class="required">*</span></label>
+                  <select id="feedback-category" required class="form-control">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Material Request">Request Study Material</option>
+                    <option value="Bug Report">Report a Problem / Bug</option>
+                    <option value="Feature Suggestion">General Suggestion</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group flex-1">
+                  <label for="feedback-urgency">Priority / Urgency</label>
+                  <select id="feedback-urgency" class="form-control">
+                    <option value="Low" selected>Low (Idea / General)</option>
+                    <option value="Medium">Medium (Affects learning)</option>
+                    <option value="High">High (Site broken / Urgent)</option>
+                  </select>
+                </div>
+                <div class="form-group flex-1">
+                  <label for="feedback-contact">Contact Email (Optional)</label>
+                  <input type="email" id="feedback-contact" placeholder="john.doe@college.edu" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="feedback-description">Details <span class="required">*</span></label>
+                <textarea id="feedback-description" rows="5" placeholder="Please describe your suggestion or details of the issue you encountered..." required class="form-control"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">
+                  <i data-lucide="send"></i> Submit Feedback
+                </button>
+              </div>
+            </form>
+
+            <div class="feedback-history-section" style="margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 24px;">
+              <h3 style="margin-bottom: 16px; font-size: 1.15rem;">Your Submissions</h3>
+              <div class="materials-list" id="feedback-history-list">
+                <!-- Dynamically loaded list of feedback/bugs -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SUGGESTION WALL VIEW -->
+        <section id="view-suggestion-wall" class="app-view">
+          <div class="upload-container" style="max-width: 1000px;">
+            <div class="wall-header-section" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:28px; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom:16px;">
+              <div>
+                <h2>Student Suggestion Wall 💖</h2>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">Doubts and suggestions published after admin review. Show support by leaving a like!</p>
+              </div>
+              <button class="primary-btn" onclick="navigateTo('feedback')">
+                <i data-lucide="plus"></i> Write Suggestion
+              </button>
+            </div>
+            
+            <div class="floating-posts-canvas" id="suggestion-wall-canvas" style="position:relative; height:100%; min-height:480px; overflow:hidden; border:1px dashed var(--border-color); border-radius:var(--border-radius-md); background:rgba(0,0,0,0.15); width: 100%;">
+              <div class="canvas-glow-blob color-3"></div>
+              <div class="canvas-glow-blob color-4"></div>
+              <!-- Floating suggestion cards populated dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- STUDENT CARE CENTRE VIEW -->
+        <section id="view-help-center" class="app-view">
+          <div class="help-center-wrapper">
+            <div class="upload-header" style="margin-bottom:24px; max-width: 100%;">
+              <h2>Student Care & Counseling Centre 🆘</h2>
+              <p>Confidential peer-support and counselor-help for personal worries, life problems, and friendship issues. We are here to listen.</p>
+            </div>
+            
+            <div class="help-center-grid">
+              <!-- Submit Box & Chat (Left Column) -->
+              <div style="display:flex; flex-direction:column; gap:24px;">
+                <!-- Submit Box -->
+                <div class="help-form-container card-glow" id="care-submission-panel">
+                  <h3 style="margin-bottom:16px; font-size:1.15rem; color:var(--text-main);">Share What's on Your Mind</h3>
+                  <form id="help-request-form" class="upload-form">
+                    <div class="form-group">
+                      <label for="help-category">Topic / Mood Brief <span class="required">*</span></label>
+                      <select id="help-category" required class="form-control">
+                        <option value="" disabled selected>Select how you are feeling...</option>
+                        <option value="Friendship / Trust Issue">Feeling betrayed / Friendship problems</option>
+                        <option value="Anxiety / Stress">Feeling anxious / Academic stress</option>
+                        <option value="Loneliness / Isolation">Feeling lonely / Left out</option>
+                        <option value="Family Problems">Family pressure / Issues at home</option>
+                        <option value="Low Self-Esteem">Low confidence / Self-doubt</option>
+                        <option value="Other">Just need someone to talk to</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="help-title">Brief Summary / Headline <span class="required">*</span></label>
+                      <input type="text" id="help-title" placeholder="e.g. Having issues connecting with friends, Feeling overwhelmed" required class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="help-description">Explain what's happening <span class="required">*</span></label>
+                      <textarea id="help-description" rows="4" placeholder="Share as much details as you feel comfortable with. This remains strictly private between you and the Admin/Counselor..." required class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="help-instagram">Instagram Handle (Optional - for counselor to reach out directly)</label>
+                      <div class="dual-input">
+                        <span class="form-control" style="flex:0; width:auto; background:var(--border-color); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-weight:600; border-right:none; border-radius:8px 0 0 8px;">@</span>
+                        <input type="text" id="help-instagram" placeholder="your.handle" class="form-control" style="flex:1; border-radius:0 8px 8px 0;">
+                      </div>
+                    </div>
+
+                    <button type="submit" class="primary-btn w-full neon-glow-btn" style="margin-top:10px; justify-content:center;">
+                      <i data-lucide="heart"></i> Request Help Privately
+                    </button>
+                  </form>
+                </div>
+
+                <!-- Chat Widget (Initially shows fallback, updates when ticket is active) -->
+                <div class="help-form-container card-glow" id="visitor-chat-container">
+                  <h3 style="margin-bottom:12px; font-size:1.15rem; color:var(--text-main); display:flex; justify-content:space-between; align-items:center;">
+                    <span>Private Care Chat</span>
+                    <span class="badge" id="chat-ticket-id-badge" style="font-size:0.68rem; background:rgba(99,102,241,0.15); color:var(--primary); padding:2px 8px; border-radius:4px; display:none;">TICKET: --</span>
+                  </h3>
+                  
+                  <div id="chat-active-session" class="hidden" style="display:flex; flex-direction:column; height:320px;">
+                    <!-- Messages Area -->
+                    <div id="visitor-chat-messages" style="flex:1; overflow-y:auto; padding:12px; background:rgba(0,0,0,0.2); border:1px solid var(--border-color); border-radius:var(--border-radius-sm); display:flex; flex-direction:column; gap:10px; margin-bottom:12px;">
+                      <!-- Populated dynamically -->
+                    </div>
+                    <!-- Send Box -->
+                    <form id="visitor-chat-form" style="display:flex; gap:8px;">
+                      <input type="text" id="visitor-chat-input" placeholder="Type a message to the counselor..." required class="form-control" style="flex:1;">
+                      <button type="submit" class="primary-btn icon-only" title="Send message"><i data-lucide="send"></i></button>
+                    </form>
+                  </div>
+
+                  <div id="chat-no-session" style="padding:24px; text-align:center; color:var(--text-muted); font-size:0.85rem;">
+                    <i data-lucide="message-circle" style="width:32px; height:32px; color:var(--text-dark); margin-bottom:12px;"></i>
+                    <p>No active care session. Fill and submit the form above to start a direct private chat line with our student support team.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Calm Down Corner (Right Column) -->
+              <div class="help-form-container card-glow" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px 24px;">
+                <div class="dashboard-banner" style="background:transparent; border:none; box-shadow:none; padding:0; margin-bottom:24px;">
+                  <h3 style="font-size:1.4rem; color:var(--text-main); margin-bottom:8px;">Interactive Calm Down Corner 🧘‍♀️</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; max-width:320px; line-height:1.5;">Take a second to pause. Breathe in and out slowly, in sync with the glowing circle below, to relieve anxiety.</p>
+                </div>
+                
+                <!-- Breathing Circle Widget -->
+                <div class="breathing-container" style="position:relative; width:220px; height:220px; display:flex; align-items:center; justify-content:center; margin:20px 0;">
+                  <div class="breathing-bubble-outer"></div>
+                  <div class="breathing-bubble" id="breathing-bubble"></div>
+                  <span id="breathing-label" style="position:absolute; font-family:'Outfit', sans-serif; font-size:1rem; font-weight:700; color:white; pointer-events:none; text-shadow:0 2px 10px rgba(0,0,0,0.5);">Breathe</span>
+                </div>
+
+                <div style="margin-top:28px; width:100%; border-top:1px solid var(--border-color); padding-top:20px;">
+                  <h4 style="font-size:0.95rem; color:var(--text-main); margin-bottom:6px;">Self-Care Tips</h4>
+                  <ul style="list-style:none; text-align:left; font-size:0.8rem; color:var(--text-muted); display:flex; flex-direction:column; gap:8px; padding-left:10px; margin-top:12px;">
+                    <li style="display:flex; gap:8px;"><i data-lucide="check-circle" style="width:14px; height:14px; color:var(--success); flex-shrink:0; margin-top:2px;"></i> Talk to someone you trust about your worries.</li>
+                    <li style="display:flex; gap:8px;"><i data-lucide="check-circle" style="width:14px; height:14px; color:var(--success); flex-shrink:0; margin-top:2px;"></i> Remember that grades or friendship bumps don't define you.</li>
+                    <li style="display:flex; gap:8px;"><i data-lucide="check-circle" style="width:14px; height:14px; color:var(--success); flex-shrink:0; margin-top:2px;"></i> Drop your Instagram handle above so our counselor can reach out.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SENIOR EXPERIENCES VIEW -->
+        <section id="view-senior-experiences" class="app-view">
+          <div class="help-center-wrapper">
+            <div class="upload-header" style="margin-bottom:24px; max-width: 100%;">
+              <h2>Senior Wisdom & Placements Hub 🎓</h2>
+              <p>Real placement reviews, study strategies, and career lessons shared by graduating seniors. Click any floating post to view their full story.</p>
+            </div>
+            
+            <div class="help-center-grid">
+              <!-- Submit Box (Left Column) -->
+              <div class="help-form-container card-glow" id="experience-submission-panel">
+                <h3 style="margin-bottom:16px; font-size:1.15rem; color:var(--text-main);">Share Your Advice & Review</h3>
+                <form id="senior-experience-form" class="upload-form">
+                  <div class="form-group">
+                    <label for="exp-title">Headline / Title <span class="required">*</span></label>
+                    <input type="text" id="exp-title" placeholder="e.g. How I cracked Google SWE Internship, Coding Prep Tips" required class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exp-company">Company / Domain <span class="required">*</span></label>
+                    <input type="text" id="exp-company" placeholder="e.g. Google, Placement Prep, Higher Studies" required class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exp-content">Describe Your Journey / Advice <span class="required">*</span></label>
+                    <textarea id="exp-content" rows="6" placeholder="Share your resources, interview rounds, mistakes to avoid, and helpful study plans..." required class="form-control"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exp-contact">Contact Link / Social Handle (Optional)</label>
+                    <input type="text" id="exp-contact" placeholder="e.g. linkedin.com/in/username, @instagram" class="form-control">
+                  </div>
+
+                  <button type="submit" class="primary-btn w-full neon-glow-btn" style="margin-top:10px; justify-content:center;">
+                    <i data-lucide="award"></i> Submit Advice for Approval
+                  </button>
+                </form>
+              </div>
+
+              <!-- Floating Canvas (Right Column) -->
+              <div class="help-dashboard-container" style="min-height: 450px;">
+                <div class="dashboard-banner">
+                  <h3 style="font-size:1.15rem; margin-bottom:4px;">Wisdom Breeze 🌬️</h3>
+                  <p style="color:var(--text-muted); font-size:0.75rem;">Drifting wisdom cards from senior alumni. Hover to pause wind drift, click to open details.</p>
+                </div>
+                <div class="floating-posts-canvas" id="experiences-canvas" style="position:relative; height:100%; min-height:400px; overflow:hidden; border:1px dashed var(--border-color); border-radius:var(--border-radius-md); background:rgba(0,0,0,0.15);">
+                  <div class="canvas-glow-blob color-1"></div>
+                  <div class="canvas-glow-blob color-2"></div>
+                  <!-- Floating/drifting cards populated dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ADMIN PORTAL VIEW -->
+        <section id="view-admin" class="app-view">
+          <!-- Auth Form (Hidden when logged in) -->
+          <div class="admin-login-container card-glow" id="admin-login-card" style="max-width:450px; margin: 40px auto; padding: 32px; background: var(--bg-card); border: var(--glass-border); border-radius: var(--border-radius-md);">
+            <div class="login-header" style="text-align:center; margin-bottom:24px;">
+              <div class="brand-logo" style="margin:0 auto 12px; float:none; display:flex;">
+                <i data-lucide="lock"></i>
+              </div>
+              <h2 style="font-size:1.35rem; color:var(--text-main);">Admin Login</h2>
+              <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Authenticate to access moderation dashboard</p>
+            </div>
+            <form id="admin-login-form" class="upload-form">
+              <div class="form-group">
+                <label for="admin-username">Username</label>
+                <input type="text" id="admin-username" required class="form-control" placeholder="admin">
+              </div>
+              <div class="form-group">
+                <label for="admin-password">Password</label>
+                <input type="password" id="admin-password" required class="form-control" placeholder="••••••••">
+              </div>
+              <button type="submit" class="primary-btn w-full neon-glow-btn" style="justify-content:center; margin-top:8px;">
+                <i data-lucide="log-in"></i> Verify Login
+              </button>
+            </form>
+          </div>
+
+          <!-- Admin Main Dashboard Panel (Hidden when logged out) -->
+          <div class="admin-dashboard-wrapper hidden" id="admin-dashboard-panel">
+            <!-- Header -->
+            <div class="admin-dashboard-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+              <div>
+                <h2 style="font-size:1.6rem; color:var(--text-main); text-align:left;">Moderator Workspace Command Center 🎛️</h2>
+                <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px; text-align:left;">Secure administration workspace to review uploads, monitor queries, counsel students, and manage placements.</p>
+              </div>
+              <button class="secondary-btn" id="admin-logout-btn" style="border-color:var(--danger); color:var(--danger); display:flex; align-items:center; gap:6px;">
+                <i data-lucide="log-out"></i> Log Out
+              </button>
+            </div>
+
+            <!-- Stats Grid Overview -->
+            <div class="stats-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:24px;">
+              <div class="stat-card neon-border" style="padding:16px; border-radius:var(--border-radius-sm); text-align:left; background:rgba(255,255,255,0.01);">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Pending Materials</div>
+                <div style="font-size:2rem; font-weight:700; color:var(--accent); margin-top:8px;" id="admin-stat-materials-count">0</div>
+              </div>
+              <div class="stat-card neon-border" style="padding:16px; border-radius:var(--border-radius-sm); text-align:left; background:rgba(255,255,255,0.01);">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Pending Suggestions</div>
+                <div style="font-size:2rem; font-weight:700; color:var(--primary); margin-top:8px;" id="admin-stat-sug-count">0</div>
+              </div>
+              <div class="stat-card neon-border" style="padding:16px; border-radius:var(--border-radius-sm); text-align:left; background:rgba(255,255,255,0.01);">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Care Tickets</div>
+                <div style="font-size:2rem; font-weight:700; color:var(--info); margin-top:8px;" id="admin-stat-help-count">0</div>
+              </div>
+              <div class="stat-card neon-border" style="padding:16px; border-radius:var(--border-radius-sm); text-align:left; background:rgba(255,255,255,0.01);">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Pending Wisdom Posts</div>
+                <div style="font-size:2rem; font-weight:700; color:#ec4899; margin-top:8px;" id="admin-stat-exp-count">0</div>
+              </div>
+            </div>
+
+            <!-- Admin Search & Inspector Engine -->
+            <div class="admin-search-wrapper card-glow" style="margin-bottom: 24px; padding: 20px; border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); background: rgba(0,0,0,0.15); text-align:left;">
+              <h4 style="font-size: 0.95rem; margin-bottom: 10px; color: var(--text-main); font-weight:700; display:flex; align-items:center; gap:6px;">
+                <i data-lucide="shield-alert" style="color:var(--primary); width:18px; height:18px;"></i> Consolidated Database Inspector
+              </h4>
+              <div style="display:flex; gap:10px;">
+                <input type="text" id="admin-search-input" placeholder="Search approved or pending materials, suggestions, care tickets, or placements..." class="form-control" style="flex:1;">
+                <button class="primary-btn" id="admin-search-btn" style="padding: 0 16px;"><i data-lucide="search"></i> Inspect</button>
+              </div>
+              <!-- Collapsible Search Results Container -->
+              <div id="admin-search-results-box" class="hidden" style="margin-top: 14px; max-height: 220px; overflow-y: auto; background: rgba(0,0,0,0.25); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+                <!-- Dynamically updated -->
+              </div>
+            </div>
+
+            <!-- Admin Tabs Navigation -->
+            <div class="admin-tabs" style="display:flex; gap:12px; margin-bottom:20px; border-bottom:1px solid var(--border-color); padding-bottom:10px; overflow-x:auto;">
+              <button class="admin-tab-btn active" data-tab="materials">
+                <i data-lucide="file-text"></i> Materials Queue (<span id="admin-pending-materials-count">0</span>)
+              </button>
+              <button class="admin-tab-btn" data-tab="suggestions">
+                <i data-lucide="message-square"></i> Suggestion Feed (<span id="admin-pending-sug-count">0</span>)
+              </button>
+              <button class="admin-tab-btn" data-tab="help-center">
+                <i data-lucide="heart"></i> Care Chats (<span id="admin-help-count">0</span>)
+              </button>
+              <button class="admin-tab-btn" data-tab="experiences">
+                <i data-lucide="award"></i> Placement Wisdom (<span id="admin-pending-exp-count">0</span>)
+              </button>
+            </div>
+
+            <!-- TAB CONTENT: MATERIALS -->
+            <div class="admin-tab-content active" id="admin-tab-materials">
+              <h3 style="font-size:1.1rem; margin-bottom:12px; color:var(--text-main);">Upload Requests from Students</h3>
+              <div class="table-container" style="overflow-x:auto; width:100%;">
+                <table class="admin-table" style="width:100%; border-collapse:collapse; text-align:left; font-size:0.88rem;">
+                  <thead>
+                    <tr style="border-bottom:2px solid var(--border-color); color:var(--text-muted);">
+                      <th style="padding:12px 8px;">Document Title</th>
+                      <th style="padding:12px 8px;">Type</th>
+                      <th style="padding:12px 8px;">Subject Code</th>
+
+                      <th style="padding:12px 8px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-materials-table-body">
+                    <!-- Filled dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB CONTENT: SUGGESTIONS -->
+            <div class="admin-tab-content" id="admin-tab-suggestions" style="display:none;">
+              <h3 style="font-size:1.1rem; margin-bottom:12px; color:var(--text-main);">Suggestions & Doubts Feed</h3>
+              <div class="table-container" style="overflow-x:auto; width:100%;">
+                <table class="admin-table" style="width:100%; border-collapse:collapse; text-align:left; font-size:0.88rem;">
+                  <thead>
+                    <tr style="border-bottom:2px solid var(--border-color); color:var(--text-muted);">
+                      <th style="padding:12px 8px;">Suggestion/Doubt Title</th>
+                      <th style="padding:12px 8px;">Category</th>
+                      <th style="padding:12px 8px;">Priority</th>
+                      <th style="padding:12px 8px;">Status</th>
+                      <th style="padding:12px 8px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-suggestions-table-body">
+                    <!-- Filled dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- TAB CONTENT: HELP CENTER -->
+            <div class="admin-tab-content" id="admin-tab-help-center" style="display:none;">
+              <h3 style="font-size:1.15rem; margin-bottom:16px; color:var(--text-main);">Student Care Tickets & Counselor Console</h3>
+              <div class="admin-care-split-layout" style="display:grid; grid-template-columns: 1fr 1.2fr; gap: 20px; min-height: 480px; align-items: stretch;">
+                <!-- Left panel: list of tickets -->
+                <div class="card-glow" style="border:1px solid var(--border-color); border-radius:var(--border-radius-sm); padding:16px; overflow-y:auto; max-height:500px; background:rgba(0,0,0,0.15);">
+                  <h4 style="font-size:0.8rem; margin-bottom:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Student Support Tickets</h4>
+                  <div id="admin-care-tickets-list" style="display:flex; flex-direction:column; gap:10px;">
+                    <!-- Loaded dynamically -->
+                  </div>
+                </div>
+                
+                <!-- Right panel: Chat & details console -->
+                <div class="card-glow" id="admin-care-chat-pane" style="border:1px solid var(--border-color); border-radius:var(--border-radius-sm); padding:20px; display:flex; flex-direction:column; background:rgba(0,0,0,0.15); min-height:420px; justify-content:space-between;">
+                  <div id="admin-care-chat-active" class="hidden" style="display:flex; flex-direction:column; height:100%; justify-content:space-between;">
+                    <div style="border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:12px;">
+                      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <h4 id="admin-chat-ticket-title" style="font-size:1.05rem; color:var(--text-main); font-weight:700;">Ticket: --</h4>
+                        <span id="admin-chat-ticket-mood" class="floating-card-tag" style="margin-bottom:0;">Mood: --</span>
+                      </div>
+                      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:6px; display:flex; align-items:center; gap:6px;">
+                        <i data-lucide="instagram" style="width:14px; height:14px; color:#ec4899;"></i> Instagram Contact: 
+                        <a id="admin-chat-ticket-instagram" href="#" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none;">@--</a>
+                      </p>
+                      <div id="admin-chat-ticket-desc" style="font-size:0.82rem; background:rgba(255,255,255,0.02); padding:10px; border-radius:6px; color:var(--text-main); margin-top:8px; border:1px solid var(--border-color); line-height:1.4;">--</div>
+                    </div>
+                    
+                    <!-- Chat box messages -->
+                    <div id="admin-chat-messages" style="flex:1; overflow-y:auto; padding:12px; background:rgba(0,0,0,0.25); border:1px solid var(--border-color); border-radius:var(--border-radius-sm); display:flex; flex-direction:column; gap:8px; margin-bottom:12px; min-height:160px; max-height:220px;">
+                      <!-- Populated dynamically -->
+                    </div>
+                    
+                    <!-- Chat send form -->
+                    <form id="admin-chat-form" style="display:flex; gap:8px; margin-bottom:12px;">
+                      <input type="text" id="admin-chat-input" placeholder="Type counselor response to visitor..." required class="form-control" style="flex:1;">
+                      <button type="submit" class="primary-btn"><i data-lucide="send"></i> Send</button>
+                    </form>
+                    
+                    <button class="secondary-btn" id="admin-close-ticket-btn" style="border-color:var(--danger); color:var(--danger); font-size:0.75rem; padding:6px 12px; align-self:flex-end; justify-content:center;">
+                      <i data-lucide="archive"></i> Mark Solved & Archive Ticket
+                    </button>
+                  </div>
+                  
+                  <div id="admin-care-chat-empty" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--text-muted); text-align:center; padding:40px 20px;">
+                    <i data-lucide="message-square" style="width:36px; height:36px; color:var(--text-dark); margin-bottom:12px;"></i>
+                    <p>Select an active student care ticket from the list to view their personal concerns and open a direct private counselor chat session.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB CONTENT: SENIOR EXPERIENCES -->
+            <div class="admin-tab-content" id="admin-tab-experiences" style="display:none;">
+              <h3 style="font-size:1.1rem; margin-bottom:12px; color:var(--text-main);">Senior Wisdom & Placement Reviews Queue</h3>
+              <div class="table-container" style="overflow-x:auto; width:100%;">
+                <table class="admin-table" style="width:100%; border-collapse:collapse; text-align:left; font-size:0.88rem;">
+                  <thead>
+                    <tr style="border-bottom:2px solid var(--border-color); color:var(--text-muted);">
+                      <th style="padding:12px 8px;">Experience Title</th>
+
+                      <th style="padding:12px 8px;">Company / Field</th>
+                      <th style="padding:12px 8px;">Status</th>
+                      <th style="padding:12px 8px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-experiences-table-body">
+                    <!-- Filled dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>    </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- DOCUMENT PREVIEW MODAL -->
+  <div class="modal-overlay hidden" id="preview-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="doc-info-badge" id="modal-doc-type">PYQ</div>
+        <button class="close-btn" id="modal-close-btn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Viewer Content (Left side) -->
+        <div class="doc-viewer-container">
+          <!-- Custom mock PDF viewer interface -->
+          <div class="viewer-toolbar">
+            <div class="toolbar-left">
+              <span id="viewer-title">dsa-midsem-2024.pdf</span>
+            </div>
+            <div class="toolbar-center">
+              <button class="toolbar-btn" id="pdf-zoom-out"><i data-lucide="minus"></i></button>
+              <span class="page-indicator">Page <span id="pdf-current-page">1</span> of <span id="pdf-total-pages">4</span></span>
+              <button class="toolbar-btn" id="pdf-zoom-in"><i data-lucide="plus"></i></button>
+            </div>
+            <div class="toolbar-right">
+              <button class="primary-btn icon-only" id="pdf-download-btn" title="Download Document">
+                <i data-lucide="download"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="pdf-render-canvas" id="pdf-render-canvas">
+            <!-- Simulated document sheet -->
+            <div class="mock-sheet" id="mock-sheet">
+              <!-- Dynamically populated mock questions / text content -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Meta Sidebar (Right side) -->
+        <div class="doc-meta-sidebar">
+          <div class="meta-section">
+            <h3 id="modal-doc-title">Data Structures Mid-Sem Question Paper (2024)</h3>
+            <span class="meta-subject" id="modal-doc-subject">Data Structures (CS-201)</span>
+          </div>
+
+          <div class="meta-section">
+            <h4>Document Details</h4>
+            <ul class="meta-details-list">
+              <li>
+                <span class="detail-label"><i data-lucide="calendar"></i> Year:</span>
+                <span class="detail-value" id="modal-doc-year">2024</span>
+              </li>
+              <li>
+                <span class="detail-label"><i data-lucide="file-question"></i> Exam Type:</span>
+                <span class="detail-value" id="modal-doc-exam-type">Mid-Sem</span>
+              </li>
+
+              <li>
+                <span class="detail-label"><i data-lucide="hash"></i> Semester:</span>
+                <span class="detail-value" id="modal-doc-semester">Semester 3</span>
+              </li>
+              <li>
+                <span class="detail-label"><i data-lucide="info"></i> Description:</span>
+                <span class="detail-value" id="modal-doc-desc">Covers stacks, queues, linked lists, and basic sorting algorithms (bubble, insertion). Includes detailed answers on binary search trees.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tags list -->
+          <div class="meta-section">
+            <h4>Tags</h4>
+            <div class="tags-container" id="modal-doc-tags">
+              <!-- Badges -->
+            </div>
+          </div>
+
+          <!-- User Rating & Bookmark Quick Actions -->
+          <div class="meta-actions">
+            <button class="secondary-btn flex-1" id="modal-bookmark-btn">
+              <i data-lucide="bookmark"></i> Bookmark
+            </button>
+            <button class="secondary-btn icon-only" id="modal-share-btn" title="Copy Link">
+              <i data-lucide="share-2"></i>
+            </button>
+          </div>
+
+          <!-- Interactive Personal Note Taking Section -->
+          <div class="meta-section note-section">
+            <h4>My Study Notes</h4>
+            <p class="subtitle text-muted">Jot down quick reminders for this file. Only visible to you.</p>
+            <textarea id="personal-doc-notes" rows="4" placeholder="Write down formula sheet pages, question hints, or exam topics discussed..." class="form-control note-editor"></textarea>
+            <button class="secondary-btn w-full mt-2" id="save-note-btn">Save Notes</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SENIOR EXPERIENCE DETAIL MODAL -->
+  <div class="modal-overlay hidden" id="experience-modal">
+    <div class="modal-container" style="max-width: 600px; padding: 24px; background:var(--bg-sidebar); border:var(--glass-border); border-radius:var(--border-radius-md);">
+      <div class="modal-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px; display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="display:flex; flex-direction:column; gap:4px; text-align:left;">
+          <h3 id="modal-exp-title" style="font-size:1.25rem; color:var(--text-main); font-weight:700;">Experience Title</h3>
+          <span class="floating-card-tag" id="modal-exp-company" style="font-size:0.68rem; background:var(--info-glow); color:var(--info); margin-bottom:0;">Company/Field</span>
+        </div>
+        <button class="close-btn" id="modal-exp-close-btn" style="background:none; border:none; color:var(--text-muted); cursor:pointer;">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body" style="display:flex; flex-direction:column; gap:16px;">
+        <div id="modal-exp-content" style="font-size:0.9rem; line-height:1.6; color:var(--text-main); background:rgba(0,0,0,0.15); border:1px solid var(--border-color); padding:16px; border-radius:8px; max-height:280px; overflow-y:auto; white-space:pre-wrap; text-align:left;">
+          Experience Details...
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SUGGESTION DETAIL MODAL -->
+  <div class="modal-overlay hidden" id="suggestion-detail-modal">
+    <div class="modal-container" style="max-width: 550px; padding: 24px; background:var(--bg-sidebar); border:var(--glass-border); border-radius:var(--border-radius-md);">
+      <div class="modal-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px; display:flex; justify-content:space-between; align-items:flex-start;">
+        <div style="display:flex; flex-direction:column; gap:4px; text-align:left;">
+          <h3 id="modal-sug-title" style="font-size:1.2rem; color:var(--text-main); font-weight:700;">Suggestion Title</h3>
+          <div style="display:flex; gap:6px; align-items:center; margin-top:2px;">
+            <span class="floating-card-tag" id="modal-sug-category" style="font-size:0.65rem; background:var(--primary-glow); color:var(--primary); margin-bottom:0;">Category</span>
+            <span class="floating-card-tag" id="modal-sug-urgency" style="font-size:0.65rem; background:var(--accent-glow); color:var(--accent); margin-bottom:0;">Urgency</span>
+          </div>
+        </div>
+        <button class="close-btn" id="modal-sug-close-btn" style="background:none; border:none; color:var(--text-muted); cursor:pointer;">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body" style="display:flex; flex-direction:column; gap:16px;">
+        <div id="modal-sug-content" style="font-size:0.88rem; line-height:1.5; color:var(--text-main); background:rgba(0,0,0,0.15); border:1px solid var(--border-color); padding:16px; border-radius:8px; max-height:260px; overflow-y:auto; white-space:pre-wrap; text-align:left;">
+          Suggestion description details...
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:14px; margin-top:4px;">
+          <span id="modal-sug-meta" style="font-size:0.75rem; color:var(--text-dark);">Submitted: --</span>
+          <button class="primary-btn" id="modal-sug-like-btn" style="font-size:0.75rem; padding:6px 12px; display:inline-flex; align-items:center; gap:6px;">
+            <i data-lucide="heart" style="width:14px; height:14px;"></i>
+            <span>Like (<span id="modal-sug-likes-count">0</span>)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION PANEL (Dropdown overlay) -->
+  <div class="notification-dropdown hidden" id="notification-dropdown">
+    <div class="notif-header">
+      <h4>Notifications</h4>
+      <button class="text-btn text-muted" id="clear-notif-btn">Mark all read</button>
+    </div>
+    <div class="notif-list" id="notif-list">
+      <!-- Generated dynamically -->
+    </div>
+  </div>
+
+  <!-- Application Toast Notification -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Dynamic Logic -->
+<script type="module" src="app.js"></script></body>
+</html>
